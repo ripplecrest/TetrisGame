@@ -28,7 +28,7 @@ public class Shape {
         };
         setShape(Tet.NoShape);
     }
-    private void setShape(Tet shape){
+    protected void setShape(Tet shape){
         for(int i = 0; i<4; i++){
             for(int j = 0; j<2; ++j){
                 coords[i][j] = coordsTable[shape.ordinal()][i][j];
