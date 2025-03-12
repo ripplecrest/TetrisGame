@@ -47,4 +47,45 @@ public class Shape {
         Tet[] values = Tet.values();
         setShape(values[x]);
     }
+    public int minX(){
+        int m = coords[0][0];
+        for(int i = 1; i<4; i++){
+            m = Math.min(m, coords[i][0]);
+        }
+        return m;
+    }
+    public int minY(){
+        int m = coords[0][1];
+        for(int i = 1; i<4; i++){
+            m = Math.min(m, coords[i][1]);
+        }
+        return m;
+    }
+
+    public Shape rotateLeft(){
+        if(pieceShape == Tet.SquareShape){
+            return this;
+        }
+        var result = new Shape();
+        result.pieceShape = pieceShape;
+
+        for(int i = 0; i<4; i++){
+            result.setX(i,y(i));
+            result.setY(i,-x(i));
+        }
+        return result;
+    }
+    public Shape rotateRight(){
+        if(pieceShape == Tet.SquareShape){
+            return this;
+        }
+        var result = new Shape();
+        result.pieceShape = pieceShape;
+        for(int i = 0; i<4; i++){
+            result.setX(i,x(i));
+            result.setY(i,-y(i));
+        }
+        return result;
+    }
+
 }
